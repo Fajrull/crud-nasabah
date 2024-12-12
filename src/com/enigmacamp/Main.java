@@ -16,24 +16,26 @@ public class Main {
         nasabahService.create(nasabah4);
         nasabahService.create(nasabah5);
 
-        System.out.println("===================");
-        System.out.println("Read all nasabah");
+//        System.out.println("===================");
+//        System.out.println("Read all nasabah");
         // read all nasabah
         Nasabah[] nasabahArr = nasabahService.getAllItems();
         System.out.println();
-        for (Nasabah nasabah : nasabahArr) {
-           if (nasabah != null) {
-               System.out.println(nasabah);
-           }
-        }
+//        for (Nasabah nasabah : nasabahArr) {
+//           if (nasabah != null) {
+//               System.out.println(nasabah);
+//           }
+//        }
 
+        System.out.println();
         System.out.println("===================");
         System.out.println("Read by id");
 
        //  read by id
-        Nasabah nasabahById = nasabahService.readById(2);
+        Nasabah nasabahById = nasabahService.readById(1);
         System.out.println(nasabahById);
 
+        System.out.println();
         System.out.println("===================");
         System.out.println("Update Nasabah");
 
@@ -42,8 +44,21 @@ public class Main {
         nasabahService.update(1, "Fajrul", "3402948474", "089516173839", "2020-01-01");
         Nasabah nasabahById2 = nasabahService.readById(1);
         System.out.println(nasabahById2);
+
+        System.out.println();
+        System.out.println("===================");
+        System.out.println("Delete Nasabah");
+
+        // delete nasabah
+        nasabahService.delete(5);
+        for (Nasabah nasabah : nasabahArr) {
+            if (nasabah != null) {
+                System.out.println(nasabah);
+            }
+        }
         }
     }
+
 
 
 // Lanjutkanlah hands on dengan ketentuan berikut:

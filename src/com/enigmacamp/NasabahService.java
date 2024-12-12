@@ -37,7 +37,19 @@ public class NasabahService {
                 items[i].setNik(nik);
                 items[i].setPhoneNumber(phoneNumber);
                 items[i].setBirthDate(birthDate);
-                System.out.println("Nasabah berhasil diupdate");
+                System.out.println("Nasabah dengan id " + id + " berhasil diupdate");
+                return;
+            }
+        }
+        System.out.println("Nasabah tidak ditemukan");
+    }
+
+    // Delete by id
+    public void delete(int id) {
+        for (int i = 0; i < items.length; i++) {
+            if (items[i] != null && items[i].getId() == id) {
+                items[i] = null;
+                System.out.println("Nasabah dengan id " + id + " berhasil dihapus");
                 return;
             }
         }
