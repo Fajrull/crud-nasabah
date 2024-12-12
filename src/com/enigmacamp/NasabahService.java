@@ -12,6 +12,7 @@ public class NasabahService implements NasabahInterface{
     //    Registrasi Nasabah
     public void create(Nasabah nasabah) {
         try {
+            validateUniqueNasabah(nasabah.getNik(), nasabah.getPhoneNumber());
             validateAddNasabah(nasabahCount);
             items[nasabahCount++] = nasabah;
             System.out.println("Nasabah berhasil ditambahkan");
@@ -99,6 +100,22 @@ public class NasabahService implements NasabahInterface{
         }
     }
 
+    // membuat agar id,nik,phone number unik dan id,nik,phone number tidak boleh sama
+    public void validateUniqueNasabah(String nik, String phoneNumber) throws InvalidAddNasabah{
+        Nasabah[] nasabahList = getAllItems();
+
+        for (Nasabah nasabah : nasabahList) {
+            if (nasabah != null) {
+                if (nasabah.getNik() == nik) {
+                    throw new InvalidAddNasabah("NIK sudah terdaftar");
+                }
+                if (nasabah.getPhoneNumber() == phoneNumber) {
+                    throw new InvalidAddNasabah("Nomor hp sudah terdaftar");
+                }
+            }
+
+        }
+    }
 
 
 
