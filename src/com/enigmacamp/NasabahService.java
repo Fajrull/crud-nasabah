@@ -29,6 +29,18 @@ public class NasabahService {
         return null;
     }
 
-
-
+    // Update nasabah by id , name, nik, phone number, birthdate
+    public void update(int id, String fullName, String nik, String phoneNumber, String birthDate) {
+        for (int i = 0; i < items.length; i++) {
+            if (items[i] != null && items[i].getId() == id) {
+                items[i].setFullName(fullName);
+                items[i].setNik(nik);
+                items[i].setPhoneNumber(phoneNumber);
+                items[i].setBirthDate(birthDate);
+                System.out.println("Nasabah berhasil diupdate");
+                return;
+            }
+        }
+        System.out.println("Nasabah tidak ditemukan");
+    }
 }

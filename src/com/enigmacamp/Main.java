@@ -16,6 +16,8 @@ public class Main {
         nasabahService.create(nasabah4);
         nasabahService.create(nasabah5);
 
+        System.out.println("===================");
+        System.out.println("Read all nasabah");
         // read all nasabah
         Nasabah[] nasabahArr = nasabahService.getAllItems();
         System.out.println();
@@ -26,13 +28,23 @@ public class Main {
         }
 
         System.out.println("===================");
+        System.out.println("Read by id");
 
        //  read by id
         Nasabah nasabahById = nasabahService.readById(2);
         System.out.println(nasabahById);
 
+        System.out.println("===================");
+        System.out.println("Update Nasabah");
+
+
+        // update nasabah
+        nasabahService.update(1, "Fajrul", "3402948474", "089516173839", "2020-01-01");
+        Nasabah nasabahById2 = nasabahService.readById(1);
+        System.out.println(nasabahById2);
+        }
     }
-}
+
 
 // Lanjutkanlah hands on dengan ketentuan berikut:
 // 1. Lengkapi service CRUD (create, read(all & id), update, delete)
