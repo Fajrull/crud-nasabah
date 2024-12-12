@@ -19,4 +19,16 @@ public class NasabahService {
         return items;
     }
 
+    // Read by id
+    public Nasabah readById(int id) {
+        for (int i = 0; i < items.length; i++) {
+            if (items[i] != null && items[i].getId() == id) {
+                return items[i];
+            }
+        }
+        return null;
+    }
+
+
+
 }

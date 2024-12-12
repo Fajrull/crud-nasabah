@@ -25,6 +25,12 @@ public class Main {
            }
         }
 
+        System.out.println("===================");
+
+       //  read by id
+        Nasabah nasabahById = nasabahService.readById(2);
+        System.out.println(nasabahById);
+
     }
 }
 
