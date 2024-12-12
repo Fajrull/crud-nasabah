@@ -3,21 +3,8 @@ package com.enigmacamp;
 public class Main {
     public static void main(String[] args) {
         Nasabah nasabah1 = new Nasabah(1, "Nasabah 1", "123", "123", "123");
-        Nasabah nasabah2 = new Nasabah(2, "Nasabah 2", "123", "123", "123");
-        Nasabah nasabah3 = new Nasabah(3, "Nasabah 3", "123", "123", "123");
-        Nasabah nasabah4 = new Nasabah(4, "Nasabah 4", "123", "123", "123");
-        Nasabah nasabah5 = new Nasabah(5, "Nasabah 5", "123", "123", "123");
-        Nasabah nasabah6 = new Nasabah(6, "Nasabah 6", "123", "123", "123");
-        Nasabah nasabah7 = new Nasabah(7, "Nasabah 7", "123", "123", "123");
-        Nasabah nasabah8 = new Nasabah(8, "Nasabah 8", "123", "123", "123");
-        Nasabah nasabah9 = new Nasabah(9, "Nasabah 9", "123", "123", "123");
-        Nasabah nasabah10 = new Nasabah(10, "Nasabah 10", "123", "123", "123");
-        Nasabah nasabah11 = new Nasabah(11, "Nasabah 11", "123", "123", "123");
-        Nasabah nasabah12 = new Nasabah(12, "Nasabah 12", "123", "123", "123");
-        Nasabah nasabah13 = new Nasabah(13, "Nasabah 13", "123", "123", "123");
-        Nasabah nasabah14 = new Nasabah(14, "Nasabah 14", "123", "123", "123");
-        Nasabah nasabah15 = new Nasabah(15, "Nasabah 15", "123", "123", "123");
-        Nasabah nasabah16 = new Nasabah(16, "Nasabah 16", "123", "123", "123");
+        Nasabah nasabah2 = new Nasabah(2, "Nasabah 2", "1234", "12343", "14323");
+        Nasabah nasabah3 = new Nasabah(3, "Nasabah 3", "123", "1213", "1223");
 
 
         NasabahService nasabahService = new NasabahService();
@@ -25,19 +12,7 @@ public class Main {
         nasabahService.create(nasabah1);
         nasabahService.create(nasabah2);
         nasabahService.create(nasabah3);
-        nasabahService.create(nasabah4);
-        nasabahService.create(nasabah5);
-        nasabahService.create(nasabah6);
-        nasabahService.create(nasabah7);
-        nasabahService.create(nasabah8);
-        nasabahService.create(nasabah9);
-        nasabahService.create(nasabah10);
-        nasabahService.create(nasabah11);
-        nasabahService.create(nasabah12);
-        nasabahService.create(nasabah13);
-        nasabahService.create(nasabah14);
-        nasabahService.create(nasabah15);
-        nasabahService.create(nasabah16);
+
 
 //        System.out.println("===================");
 //        System.out.println("Read all nasabah");
@@ -64,16 +39,19 @@ public class Main {
 
 
         // update nasabah
-        nasabahService.update(1, "Fajrul", "3402948474", "089516173839", "2020-01-01");
+        nasabahService.update(1, "", "", "", "2020-01-01");
         Nasabah nasabahById2 = nasabahService.readById(1);
         System.out.println(nasabahById2);
 
         System.out.println();
         System.out.println("===================");
+        System.out.println();
         System.out.println("Delete Nasabah");
 
         // delete nasabah
         nasabahService.delete(5);
+        System.out.println();
+        System.out.println("Read All Data Nasabah");
         for (Nasabah nasabah : nasabahArr) {
             if (nasabah != null) {
                 System.out.println(nasabah);

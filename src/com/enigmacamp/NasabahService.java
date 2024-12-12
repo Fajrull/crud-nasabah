@@ -1,8 +1,8 @@
 package com.enigmacamp;
 
 // Kelas untuk memanipulasi data nasabah seperti (create, read, update, delete)
-public class NasabahService {
-    private Nasabah[] items = new Nasabah[15];
+public class NasabahService implements NasabahInterface{
+    private static Nasabah[] items = new Nasabah[4];
     private int nasabahCount = 0;
 
 
@@ -38,37 +38,70 @@ public class NasabahService {
 
     // Update nasabah by id , name, nik, phone number, birthdate
     public void update(int id, String fullName, String nik, String phoneNumber, String birthDate) {
-        for (int i = 0; i < items.length; i++) {
-            if (items[i] != null && items[i].getId() == id) {
-                items[i].setFullName(fullName);
-                items[i].setNik(nik);
-                items[i].setPhoneNumber(phoneNumber);
-                items[i].setBirthDate(birthDate);
-                System.out.println("Nasabah dengan id " + id + " berhasil diupdate");
-                return;
-            }
-        }
-        System.out.println("Nasabah tidak ditemukan");
+       try {
+           validateIdNasabah(readById(id));
+           validateUpdateNasabah(fullName, nik, phoneNumber, birthDate);
+           for (int i = 0; i < items.length; i++) {
+               if (items[i] != null && items[i].getId() == id) {
+                   items[i].setFullName(fullName);
+                   items[i].setNik(nik);
+                   items[i].setPhoneNumber(phoneNumber);
+                   items[i].setBirthDate(birthDate);
+                   System.out.println("Nasabah dengan id " + id + " berhasil diupdate");
+                   return;
+               }
+           }
+       } catch (invalidNasabahId e){
+           System.out.println(e.getMessage());
+       }
+
+//        System.out.println("Nasabah tidak ditemukan");
     }
 
     // Delete by id
     public void delete(int id) {
-        for (int i = 0; i < items.length; i++) {
-            if (items[i] != null && items[i].getId() == id) {
-                items[i] = null;
-                System.out.println("Nasabah dengan id " + id + " berhasil dihapus");
-                return;
+        try {
+            validateIdNasabah(readById(id));
+            for (int i = 0; i < items.length; i++) {
+                if (items[i] != null && items[i].getId() == id) {
+                    items[i] = null;
+                    System.out.println("Nasabah dengan id " + id + " berhasil dihapus");
+                    return;
+                }
             }
+        } catch (invalidNasabahId e){
+            System.out.println(e.getMessage());
         }
-        System.out.println("Nasabah tidak ditemukan");
+
+//        System.out.println("Nasabah tidak ditemukan");
     }
 
-    // Custom exception
-    public static int validateAddNasabah(int nasabahCount) throws InvalidAddNasabah{
-        if (nasabahCount == 15) {
+    // Custom exception validate add nasabah
+    public  int validateAddNasabah(int nasabahCount) throws InvalidAddNasabah{
+        if (nasabahCount == getAllItems().length) {
             throw new InvalidAddNasabah("Jumlah nasabah sudah penuh");
         } else {
             return(nasabahCount);
         }
     }
+
+    // Custom exception validasi jika data tidak ada ketika melakukan update, delete dan get by id
+    public static void validateIdNasabah(Nasabah items) throws InvalidAddNasabah{
+        if (items == null) {
+            throw new invalidNasabahId("Nasabah tidak ditemukan, coba periksa kembali id");
+        }
+    }
+
+    // custom update agar data tidak kosong
+    public static void validateUpdateNasabah(String fullName, String nik, String phoneNumber, String birthDate) throws InvalidUpdateNasabah{
+        if (fullName.isEmpty() || nik.isEmpty() || phoneNumber.isEmpty() || birthDate.isEmpty()) {
+            throw new invalidNasabahId("Data nasabah tidak boleh kosong");
+        }
+    }
+
+
+
+
+
+
 }
