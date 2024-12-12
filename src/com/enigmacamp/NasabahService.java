@@ -6,16 +6,23 @@ public class NasabahService {
     private int nasabahCount = 0;
 
 
-    public NasabahService(){}
+    public NasabahService() {
+    }
 
     //    Registrasi Nasabah
-    public void create(Nasabah nasabah){
-        items[nasabahCount++] = nasabah;
-        System.out.println("Nasabah berhasil ditambahkan");
+    public void create(Nasabah nasabah) {
+        try {
+            validateAddNasabah(nasabahCount);
+            items[nasabahCount++] = nasabah;
+            System.out.println("Nasabah berhasil ditambahkan");
+        } catch (InvalidAddNasabah e){
+            System.out.println(e.getMessage());
+        }
+
     }
 
     // Read all nasabah
-    public Nasabah[] getAllItems(){
+    public Nasabah[] getAllItems() {
         return items;
     }
 
@@ -54,5 +61,14 @@ public class NasabahService {
             }
         }
         System.out.println("Nasabah tidak ditemukan");
+    }
+
+    // Custom exception
+    public static int validateAddNasabah(int nasabahCount) throws InvalidAddNasabah{
+        if (nasabahCount == 15) {
+            throw new InvalidAddNasabah("Jumlah nasabah sudah penuh");
+        } else {
+            return(nasabahCount);
+        }
     }
 }
