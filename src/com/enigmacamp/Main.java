@@ -2,61 +2,31 @@ package com.enigmacamp;
 
 public class Main {
     public static void main(String[] args) {
-        Nasabah nasabah1 = new Nasabah(1, "Nasabah 1", "123", "123", "123");
-        Nasabah nasabah2 = new Nasabah(2, "Nasabah 2", "1234", "12343", "14323");
-        Nasabah nasabah3 = new Nasabah(3, "Nasabah 3", "123", "1213", "1223");
+        NasabahService nasabah = new NasabahService();
 
+        System.out.println("=".repeat(30));
+        System.out.println("Create Data Nasabah");
+        nasabah.create(1,"fajrul","123","1233","23-32-33");
+        nasabah.create(1,"khaq","1253","1234","23-32-33");
 
-        NasabahService nasabahService = new NasabahService();
-
-        nasabahService.create(nasabah1);
-        nasabahService.create(nasabah2);
-        nasabahService.create(nasabah3);
-
-
-//        System.out.println("===================");
-//        System.out.println("Read all nasabah");
-        // read all nasabah
-        Nasabah[] nasabahArr = nasabahService.getAllItems();
-        System.out.println();
-//        for (Nasabah nasabah : nasabahArr) {
-//           if (nasabah != null) {
-//               System.out.println(nasabah);
-//           }
-//        }
-
-        System.out.println();
-        System.out.println("===================");
-        System.out.println("Read by id");
-
-       //  read by id
-        Nasabah nasabahById = nasabahService.readById(1);
-        System.out.println(nasabahById);
-
-        System.out.println();
-        System.out.println("===================");
-        System.out.println("Update Nasabah");
-
-
-        // update nasabah
-        nasabahService.update(1, "", "", "", "2020-01-01");
-        Nasabah nasabahById2 = nasabahService.readById(1);
-        System.out.println(nasabahById2);
-
-        System.out.println();
-        System.out.println("===================");
-        System.out.println();
-        System.out.println("Delete Nasabah");
-
-        // delete nasabah
-        nasabahService.delete(5);
-        System.out.println();
+        System.out.println("=".repeat(30));
         System.out.println("Read All Data Nasabah");
-        for (Nasabah nasabah : nasabahArr) {
-            if (nasabah != null) {
-                System.out.println(nasabah);
-            }
-        }
+        System.out.println(nasabah.dataNasabah());
+        System.out.println("=".repeat(30));
+
+        System.out.println("Read Data By ID");
+        System.out.println(nasabah.dataById(5));
+        System.out.println("=".repeat(30));
+
+        System.out.println("Update Data Nasabah");
+        nasabah.updateData(1,"sc","123","1293","20-20-22");
+        System.out.println(nasabah.dataById(1));
+
+
+        System.out.println("=".repeat(30));
+        System.out.println("Delete Data Nasabah");
+        nasabah.deleteNasabah(9);
+        System.out.println(nasabah.dataNasabah());
         }
     }
 
