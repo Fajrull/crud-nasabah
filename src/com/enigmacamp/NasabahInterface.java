@@ -7,5 +7,5 @@ public interface NasabahInterface {
     public ArrayList<Nasabah> dataNasabah();
     public ArrayList<Nasabah> dataById(int id);
     public ArrayList<Nasabah> updateData(int id, String fullName, String nik, String phoneNumber, String birthDate);
-    public ArrayList<Nasabah> deleteNasabah(int id);
+    public void deleteNasabah(int id);
 }

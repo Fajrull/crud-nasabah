@@ -27,7 +27,7 @@ public class NasabahService implements NasabahInterface{
         return items;
     }
 
-    // Read data by id, tambahkan jika id tidak ada maka akan menampilkan sout
+    // Read data by id
     public ArrayList<Nasabah> dataById(int id){
         ArrayList<Nasabah> result = new ArrayList<>();
         for (Nasabah nasabah : items) {
@@ -63,10 +63,9 @@ public class NasabahService implements NasabahInterface{
     }
 
     // Delete nasabah by id
-    public ArrayList<Nasabah> deleteNasabah(int id) {
+    public void deleteNasabah(int id) {
         try {
             validateDayaEmpty(id);
-            ArrayList<Nasabah> result = new ArrayList<>();
             for (Nasabah nasabah : items) {
                 if (nasabah.getId() == id) {
                     items.remove(nasabah);
@@ -74,11 +73,9 @@ public class NasabahService implements NasabahInterface{
                     break;
                 }
             }
-            return result;
         } catch (InvalidExecption e) {
             System.out.println(e.getMessage());
         }
-        return null;
     }
 
     //validasi agar nik,phone number unik dan id,nik,phone number tidak boleh sama
@@ -101,7 +98,6 @@ public class NasabahService implements NasabahInterface{
             }
         }
     }
-
 
     // validasi agar update data tidak kosong
     public void validateUpdateNasabah(String fullName, String nik, String phoneNumber, String birthDate) throws InvalidExecption{
