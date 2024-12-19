@@ -1,19 +1,21 @@
 package com.enigmacamp;
 
+import com.enigmacamp.model.Nasabah;
 import com.enigmacamp.service.NasabahService;
 import com.enigmacamp.utils.InputHandler;
 
-import java.io.File;
+import java.io.*;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         NasabahService nasabah = new NasabahService();
+        NasabahService.checkAndCreateFile(new File("nasabah.txt"));
 
 //        System.out.println("=".repeat(30));
 //        System.out.println("Create Data Nasabah");
-        nasabah.create(1,"fajrul","3402","0882","23-32-33");
-        nasabah.create(2,"yoriichi","3405","0881","23-32-33");
+//        nasabah.create(1,"fajrul","3402","0882","23-32-33");
+//        nasabah.create(2,"yoriichi","3405","0881","23-32-33");
 //
 //        System.out.println("=".repeat(30));
 //        System.out.println("Read All Data Nasabah");
@@ -104,7 +106,7 @@ public class Main {
                     System.out.print("ID : ");
                     id = input.GetInt("");
                     nasabah.deleteNasabah(id);
-                    System.out.println(nasabah.dataNasabah());
+//                    System.out.println(nasabah.dataNasabah());
                     break;
                 case 6:
                     System.out.println("=".repeat(30));
@@ -116,8 +118,10 @@ public class Main {
                     System.out.println("Pilihan Tidak ada");
             }
         }
-        }
     }
+}
+
+
 
 
 

@@ -1,5 +1,7 @@
 package com.enigmacamp.model;
 
+import java.util.Objects;
+
 public class Nasabah {
     private int id;
     private String fullName;
@@ -13,6 +15,9 @@ public class Nasabah {
         this.nik = nik;
         this.phoneNumber = phoneNumber;
         this.birthDate = birthDate;
+    }
+
+    public Nasabah() {
     }
 
     public int getId() {
@@ -64,5 +69,17 @@ public class Nasabah {
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", birthDate='" + birthDate + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Nasabah nasabah = (Nasabah) o;
+        return id == nasabah.id && Objects.equals(fullName, nasabah.fullName) && Objects.equals(nik, nasabah.nik) && Objects.equals(phoneNumber, nasabah.phoneNumber) && Objects.equals(birthDate, nasabah.birthDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, fullName, nik, phoneNumber, birthDate);
     }
 }
