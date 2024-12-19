@@ -1,5 +1,9 @@
 package com.enigmacamp;
 
+import com.enigmacamp.service.NasabahService;
+import com.enigmacamp.utils.InputHandler;
+
+import java.io.File;
 import java.util.Scanner;
 
 public class Main {
@@ -9,7 +13,7 @@ public class Main {
 //        System.out.println("=".repeat(30));
 //        System.out.println("Create Data Nasabah");
         nasabah.create(1,"fajrul","3402","0882","23-32-33");
-        nasabah.create(2,"luluk","3405","0881","23-32-33");
+        nasabah.create(2,"yoriichi","3405","0881","23-32-33");
 //
 //        System.out.println("=".repeat(30));
 //        System.out.println("Read All Data Nasabah");
@@ -33,6 +37,7 @@ public class Main {
         // memanggil Scanner dari file inputHandler
         InputHandler input = new InputHandler();
         input.inputHandler(new Scanner(System.in));
+
         while (true) {
             System.out.println("=".repeat(30));
             System.out.println("1. Create Data Nasabah");

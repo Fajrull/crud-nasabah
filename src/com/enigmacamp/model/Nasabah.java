@@ -1,4 +1,4 @@
-package com.enigmacamp;
+package com.enigmacamp.model;
 
 public class Nasabah {
     private int id;

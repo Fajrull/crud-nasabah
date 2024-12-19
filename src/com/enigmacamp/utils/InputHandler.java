@@ -1,4 +1,4 @@
-package com.enigmacamp;
+package com.enigmacamp.utils;
 
 import java.util.Scanner;
 
